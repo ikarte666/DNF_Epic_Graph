@@ -1,0 +1,87 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script type="text/javascript">
+        window.onload = function () {
+            let count = {{count}};
+            let rows = {{date|safe}};
+            Highcharts.chart("container", {
+                title: {
+                    text: "에픽 획득 추이",
+                },
+        
+                subtitle: {
+                    text: "나는 운이 좋은 사람인가?",
+                },
+        
+                yAxis: {
+                    title: {
+                        text: "획득 에픽 수",
+                    },
+                },
+        
+                xAxis: {
+                    categories: rows
+                },
+        
+                legend: {
+                    layout: "vertical",
+                    align: "right",
+                    verticalAlign: "middle",
+                },
+        
+                plotOptions: {
+                    series: {
+                        label: {
+                            connectorAllowed: false,
+                        },
+                    },
+                },
+        
+                series: [
+                    {
+                        name: "획득 에픽 수",
+                        data: count,
+                    },
+                ],
+        
+                responsive: {
+                    rules: [
+                        {
+                            condition: {
+                                maxWidth: 500,
+                            },
+                            chartOptions: {
+                                legend: {
+                                    layout: "horizontal",
+                                    align: "center",
+                                    verticalAlign: "bottom",
+                                },
+                            },
+                        },
+                    ],
+                },
+            });
+        };  
+    </script>
+    <title>던파 에픽그래프</title>
+</head>
+<body>
+    <div>
+        <div id="container"></div>
+        <div>
+            기간 내 총 에픽 획득량 : {{all_count}}
+        </div>
+        <div>
+            기간 내 일일 평균 에픽 획득량 : {{avg_count}}
+        </div>
+        <div>
+            기간 내 일일 최대 에픽 획득량 : {{max_count}}
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,10 @@
+{
+    "python.pythonPath": "C:\\Users\\Rondo\\.virtualenvs\\dnfepic-RWXVuUK7\\Scripts\\python.exe",
+    "python.linting.flake8Enabled": true,
+    "python.linting.flake8Args": ["--max-line-length=250", "--ignore=E501"],
+    "python.linting.enabled": true,
+    "python.formatting.provider": "black",
+    "python.formatting.blackArgs": ["--line-length", "100"],
+    "editor.formatOnSave": true,
+    "git.ignoreLimitWarning": true
+}

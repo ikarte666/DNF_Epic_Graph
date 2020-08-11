@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="text/javascript" src="{% static '/js/home.js' %}"></script>
+    <title>던파 에픽그래프</title>
+</head>
+{% block content %}
+<body>
+    <form action="{% url 'search' %}" method="GET">
+        {{form.as_p}}
+        <button id="search">
+            검색
+        </button>
+    </form>
+</body>
+{% endblock content %}
+
+</html>
