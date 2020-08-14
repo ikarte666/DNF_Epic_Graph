@@ -9,6 +9,7 @@
         window.onload = function () {
             let count = {{count}};
             let rows = {{date|safe}};
+            let name = "{{name}}";
             Highcharts.chart("container", {
                 title: {
                     text: "에픽 획득 추이",
@@ -44,7 +45,7 @@
         
                 series: [
                     {
-                        name: "획득 에픽 수",
+                        name: name,
                         data: count,
                     },
                 ],
@@ -68,19 +69,23 @@
             });
         };  
     </script>
-    <title>던파 에픽그래프</title>
+    <link rel="icon" href="{% static '/img/gunsin.png' %}">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <title>에픽그래프</title>
 </head>
 <body>
     <div>
-        <div id="container"></div>
-        <div>
-            기간 내 총 에픽 획득량 : {{all_count}}
-        </div>
-        <div>
-            기간 내 일일 평균 에픽 획득량 : {{avg_count}}
-        </div>
-        <div>
-            기간 내 일일 최대 에픽 획득량 : {{max_count}}
+        <div id="container" class="w-1/2 mx-auto"></div>
+        <div class="text-center">
+            <div>
+                기간 내 총 에픽 획득량 : {{all_count}}
+            </div>
+            <div>
+                기간 내 일일 평균 에픽 획득량 : {{avg_count}}
+            </div>
+            <div>
+                기간 내 일일 최대 에픽 획득량 : {{max_count}}
+            </div>
         </div>
     </div>
 </body>

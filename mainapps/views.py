@@ -29,10 +29,13 @@ def search_view(request):
 
     if e_date == today_date:
         e_date += " " + today.strftime("%H:%M")
+    else:
+        e_date += " 23:59"
 
     secret_file = os.path.join(
         os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "secrets.json"
     )
+    print(e_date)
 
     with open(secret_file) as f:
         secrets = json.loads(f.read())
@@ -133,6 +136,7 @@ def search_view(request):
         "max_count": max_count,
         "avg_count": avg_count,
         "all_count": all_count,
+        "name": name,
     }
     # 추가할거 : 기간 내 일일 평균 에픽 획득량, 가장 운 좋은날(최다 에픽 획득), 가장 운 좋은 채널(최다 에픽 획득)
     return render(request, "main/search.html", context=context,)

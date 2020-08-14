@@ -5,16 +5,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script type="text/javascript" src="{% static '/js/home.js' %}"></script>
-    <title>던파 에픽그래프</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <link rel="icon" href="{% static '/img/gunsin.png' %}">
+    <title>에픽그래프</title>
 </head>
 {% block content %}
-<body>
-    <form action="{% url 'search' %}" method="GET">
-        {{form.as_p}}
-        <button id="search">
-            검색
-        </button>
-    </form>
+<body class="w-full home">
+    <div class="container mx-auto mt-5">
+        <img src="{% static '/img/epic.png' %}" class="mx-auto img">
+        <form action="{% url 'search' %}" method="GET" class="w-form p-4 text-center border border-gray-400 mx-auto mt-10">
+            {{form.as_p}}
+            <button id="search" class="text-black mt-5 bg-yellow-300 shadow-md rounded-lg px-16 py-1 hover:bg-yellow-400">
+                검색
+            </button>
+        </form>
+    </div>
+    <footer class="text-center w-4/12 mx-auto mt-4">
+        <a href="http://developers.neople.co.kr" target="_blank">
+            <img src="{% static '/img/logo.png' %}" alt="Neople 오픈 API" class="h-32 mx-auto" />
+        </a>
+    </footer>
 </body>
 {% endblock content %}
 

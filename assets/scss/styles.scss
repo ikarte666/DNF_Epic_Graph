@@ -1,0 +1,33 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.img {
+    width: 400px;
+    height: 400px;
+}
+
+.w-form {
+    width: 400px;
+}
+
+form p {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #e7e7e7;
+}
+
+form p input[type="date"] {
+    border-bottom: 1px solid #8c8c8c;
+    padding: 2px;
+    width: 170px;
+    box-sizing: border-box;
+}
+
+form p input[type="text"] {
+    border-bottom: 1px solid #8c8c8c;
+    box-sizing: border-box;
+    padding: 2px 0px;
+}

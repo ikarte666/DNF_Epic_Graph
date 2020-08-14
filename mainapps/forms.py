@@ -19,5 +19,5 @@ class SearchForm(forms.Form):
     )
     server = forms.ChoiceField(choices=SERVER_VALUE, label_suffix="", label="서버")
     char_name = forms.CharField(max_length=12, label_suffix="", label="캐릭터명", required=False)
-    start_date = forms.DateField(widget=DateInput, label="기간", required=False)
-    end_date = forms.DateField(widget=DateInput, label=False, required=False)
+    start_date = forms.DateField(widget=DateInput, label_suffix="", label="시작일", required=False)
+    end_date = forms.DateField(widget=DateInput, label_suffix="", label="종료일", required=False)
