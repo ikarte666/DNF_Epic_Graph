@@ -1,4 +1,6 @@
-import requests, json, os
+import requests
+import json
+import os
 import datetime
 from urllib import parse
 from django.shortcuts import render
@@ -12,6 +14,18 @@ def main_view(request):
 
 
 def search_view(request):
+    def switch(x):
+        return {
+            "cain": "카인",
+            "hilder": "힐더",
+            "prey": "프레이",
+            "casillas": "카시야스",
+            "siroco": "시로코",
+            "diregie": "디레지에",
+            "anton": "안톤",
+            "bakal": "바칼",
+        }[x]
+
     #  변수 값 세팅 및 apikey 가져오기
     server = request.GET.get("server")
     name = request.GET.get("char_name")
@@ -35,7 +49,6 @@ def search_view(request):
     secret_file = os.path.join(
         os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "secrets.json"
     )
-    print(e_date)
 
     with open(secret_file) as f:
         secrets = json.loads(f.read())
@@ -129,6 +142,7 @@ def search_view(request):
     keys = list(json_data.keys())
     values = list(json_data.values())
     avg_count = round(all_count / day_count, 1)
+    server_name = switch(server)
 
     context = {
         "date": keys,
@@ -137,6 +151,9 @@ def search_view(request):
         "avg_count": avg_count,
         "all_count": all_count,
         "name": name,
+        "server": server,
+        "server_name": server_name,
+        "char_id": char_id,
     }
-    # 추가할거 : 기간 내 일일 평균 에픽 획득량, 가장 운 좋은날(최다 에픽 획득), 가장 운 좋은 채널(최다 에픽 획득)
+
     return render(request, "main/search.html", context=context,)

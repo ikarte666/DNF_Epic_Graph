@@ -29,5 +29,10 @@ form p input[type="date"] {
 form p input[type="text"] {
     border-bottom: 1px solid #8c8c8c;
     box-sizing: border-box;
-    padding: 2px 0px;
+    padding: 2px;
+    width: 170px;
+}
+
+.title-p {
+    @apply text-4xl mb-3;
 }

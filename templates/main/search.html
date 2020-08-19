@@ -16,7 +16,7 @@
                 },
         
                 subtitle: {
-                    text: "나는 운이 좋은 사람인가?",
+                    text: "과연 나는 기린인가?",
                 },
         
                 yAxis: {
@@ -71,22 +71,41 @@
     </script>
     <link rel="icon" href="{% static '/img/gunsin.png' %}">
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap" rel="stylesheet">
     <title>에픽그래프</title>
 </head>
-<body>
+<body style="font-family: 'Do Hyeon', sans-serif;">
     <div>
-        <div id="container" class="w-1/2 mx-auto"></div>
-        <div class="text-center">
-            <div>
-                기간 내 총 에픽 획득량 : {{all_count}}
+        <div id="container" class="mx-auto mt-10 border border-yellow-500 p-5 box-border" style="width: 1080px; height: 360px;"></div>
+        <div class="flex mx-auto justify-between" style="width: 1080px;">
+            <div style="width: 360px;">
+                <img src="https://img-api.neople.co.kr/df/servers/{{server}}/characters/{{char_id}}?zoom=3" style="width: 280px; height:340px;" class="mx-auto">
+                <p class="text-center text-2xl text-gray-600">{{server_name}} - {{name}}</p>
             </div>
-            <div>
-                기간 내 일일 평균 에픽 획득량 : {{avg_count}}
-            </div>
-            <div>
-                기간 내 일일 최대 에픽 획득량 : {{max_count}}
+            <div class="mx-auto" style="width: 720px;">
+                <div class="flex justify-between leading-5 border-b border-gray-600 mt-16">
+                    <span class="title-p text-gray-600">기간 내 총 에픽 획득량: </span>
+                    <span class="text-6xl text-yellow-400">{{all_count}}</span>
+                </div>
+                <div class="flex justify-between leading-5 border-b border-gray-600 mt-16">
+                    <span class="title-p text-gray-600">기간 내 일일 평균 에픽 획득량: </span>
+                    <span class="text-6xl text-yellow-400">{{avg_count}}</span>
+                </div>
+                <div class="flex justify-between leading-5 border-b border-gray-600 mt-16">
+                    <span class="title-p text-gray-600">기간 내 일일 최대 에픽 획득량: </span>
+                    <span class="text-6xl text-yellow-400">{{max_count}}</span>
+                </div>
+                <div class="text-center">
+                    <p class="text-base my-2">*던전(신지 오큘 등), 레이드, 인도에서 획득한 에픽만 통계에 표기됩니다</p>
+                    <a href="{% url 'main' %}"><input class="text-black mt-5 bg-yellow-300 shadow-md rounded-lg px-10 py-2 hover:bg-yellow-400" style="cursor: pointer;" type="button" value="뒤로가기"></a>
+                </div>
             </div>
         </div>
     </div>
+    <footer class="text-center mx-auto mt-4" style="width: 400px;">
+        <a href="http://developers.neople.co.kr" target="_blank">
+            <img src="{% static '/img/logo.png' %}" alt="Neople 오픈 API" class="h-32 mx-auto" />
+        </a>
+    </footer>
 </body>
 </html>
