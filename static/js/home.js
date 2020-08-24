@@ -23,13 +23,10 @@ window.onload = function () {
             } else if (start_date.value == "" || first_end_date.value == "") {
                 alert("기간을 정확히 입력해주세요");
                 event.preventDefault();
-            } else if (
-                s_date.getDate() > today.getDate() ||
-                e_date.getDate() > today.getDate()
-            ) {
+            } else if (s_date > today || e_date > today) {
                 alert("시작일과 종료일은 오늘을 넘을 수 없습니다");
                 event.preventDefault();
-            } else if (s_date.getDate() > e_date.getDate()) {
+            } else if (s_date > e_date) {
                 alert("시작일이 종료일보다 큽니다");
                 event.preventDefault();
             }
