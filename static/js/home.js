@@ -7,16 +7,43 @@ window.onload = function () {
             let name = document.getElementById("id_char_name");
             let start_date = document.getElementById("id_start_date");
             let end_date = document.getElementById("id_end_date");
-
             let first_end_date = end_date;
+            let today = new Date();
+            let today_month = today.getMonth() + 1;
+
+            today_month = "00" + today_month.toString();
+            today_month = today_month.slice(-2);
+
+            let today_str = // 오늘 날짜를 str으로 만들어서 년월일만 자른것(종료 날짜가 오늘일 경우 시간을 똑같이 설정)
+                today.getFullYear().toString() +
+                "-" +
+                today_month +
+                "-" +
+                today.getDate().toString();
+
+            start_date = start_date.value;
+            start_date = start_date.replace(/-/g, "/");
+            start_date = start_date + "/00:00:00";
 
             end_date = end_date.value;
-            end_date = end_date.replace(/-/g, "/");
-            end_date = end_date + "/00:00:00";
+            if (today_str == end_date) {
+                let today_time =
+                    "/" +
+                    today.getHours().toString() +
+                    ":" +
+                    today.getMinutes().toString() +
+                    ":" +
+                    today.getSeconds().toString();
 
-            let s_date = new Date(start_date.value);
+                end_date = end_date.replace(/-/g, "/");
+                end_date = end_date + today_time;
+            } else {
+                end_date = end_date + "/23:59:59";
+            }
+
+            let s_date = new Date(start_date);
             let e_date = new Date(end_date);
-            let today = new Date();
+
             if (name.value == "") {
                 alert("캐릭터 이름을 입력해주세요");
                 event.preventDefault();
