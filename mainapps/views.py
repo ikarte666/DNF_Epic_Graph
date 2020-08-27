@@ -157,3 +157,11 @@ def search_view(request):
     }
 
     return render(request, "main/search.html", context=context,)
+
+
+def error404(request, e):
+    return render(request, "404.html", status=404)
+
+
+def error500(request):
+    return render(request, "500.html", status=500)
