@@ -48,10 +48,6 @@ window.onload = function () {
             let s_date = new Date(start_date);
             let e_date = new Date(end_date);
 
-            alert(today);
-            alert(s_date);
-            alert(e_date);
-
             if (name.value == "") {
                 alert("캐릭터 이름을 입력해주세요");
                 event.preventDefault();
